@@ -215,7 +215,7 @@ def _get_installation_paths_from_registry(logger):
             i += 1
         winreg.CloseKey(key)
     except WindowsError:
-        logger.error("error opening key %s" % base_key_name)
+        logger.debug("error opening key %s" % base_key_name)
 
     install_paths = []
     # Query the value "Installdir" on all subkeys.
@@ -232,6 +232,6 @@ def _get_installation_paths_from_registry(logger):
                 )
             winreg.CloseKey(key)
     except WindowsError:
-        logger.error("error opening key %s" % key_name)
+        logger.debug("error opening key %s" % key_name)
 
     return install_paths
